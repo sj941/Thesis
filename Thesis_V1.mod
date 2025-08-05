@@ -9,8 +9,7 @@ param dt = 24/48; /* Half hourly time steps */
 param price {D};
 param grid_connection_capacity = 15;
 param final_min_charge := 2;
-#test comment
-#TEst
+
 #trial hot water heater
 param HWH_power := 3;         # Power in kW
 param HWH_duration := 4;      # Number of time steps (e.g., 2 hours = 4 steps)
@@ -66,4 +65,5 @@ subject to AC_MinPower_IfOn {d in D}:
     ac_power[d] <= eps or ac_power[d] >= AC_power_min;
 subject to AC_TotalEnergy:
     sum {d in D} ac_power[d] * dt = AC_energy;
+
 
