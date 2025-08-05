@@ -76,15 +76,15 @@ price_data = cell2mat(price_data.getColumn('val'));
 Bat_p = ampl.getVariable('discharge_rate').getValues();
 Bat_p = cell2mat(Bat_p.getColumn('val'));
 
-WH_on = ampl.getVariable('hwh_on').getValues();
-WH_on = cell2mat(WH_on.getColumn('val'));
+% WH_on = ampl.getVariable('hwh_on').getValues();
+% WH_on = cell2mat(WH_on.getColumn('val'));
 
-AC_P = ampl.getVariable('ac_power').getValues();
-AC_P = cell2mat(AC_P.getColumn('val'));
+% AC_P = ampl.getVariable('ac_power').getValues();
+% AC_P = cell2mat(AC_P.getColumn('val'));
 
 % Plot
 figure;
-plot(indices_raw, [grid_vals_raw, PD, price_data/100,Bat_p, WH_on, PV, AC_P],'LineWidth', 2);
+plot(indices_raw, [grid_vals_raw, PD, price_data/100,Bat_p],'LineWidth', 2);
 xlabel('Time Period (half-hours)');
 ylabel('Grid Power Usage (kW)');
 title('Optimal Grid Power Usage Over 24 Hours');

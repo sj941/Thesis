@@ -44,7 +44,7 @@ minimize grid_usage:
 # subject to DemandBalance {d in D}:
 #     grid_power[d] + discharge_rate[d] = Pd[d];
 subject to DemandBalance {d in D}:
-    PV[d] + grid_power[d] + discharge_rate[d] = Pd[d] + hwh_on[d]*HWH_power + ac_power[d];
+    PV[d] + grid_power[d] + discharge_rate[d] = Pd[d] #+ hwh_on[d]*HWH_power + ac_power[d];
 
 subject to InitialBattery:
     battery_charge[first(D)] = initial_charge;
@@ -55,15 +55,15 @@ subject to FinalBattery:
 #trial hot water heater
 #subject to SingleHeaterStart:
 #    sum {d in D} hwh_start[d] = 1;
-subject to HeaterEnergy:
-    sum {d in D} hwh_on[d] * HWH_power * dt = HWH_energy;
+# subject to HeaterEnergy:
+#     sum {d in D} hwh_on[d] * HWH_power * dt = HWH_energy;
 
 #AC 
 # Constraint that says the AC can be off or operating on within Pmax and Pmin
 # constraint relaxed for convexity
-subject to AC_MinPower_IfOn {d in D}:
-    ac_power[d] <= eps or ac_power[d] >= AC_power_min;
-subject to AC_TotalEnergy:
-    sum {d in D} ac_power[d] * dt = AC_energy;
+# subject to AC_MinPower_IfOn {d in D}:
+#     ac_power[d] <= eps or ac_power[d] >= AC_power_min;
+# subject to AC_TotalEnergy:
+#     sum {d in D} ac_power[d] * dt = AC_energy;
 
 
