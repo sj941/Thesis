@@ -10,23 +10,23 @@ param price {D};
 param grid_connection_capacity = 15;
 param final_min_charge := 2;
 
-#trial hot water heater
-param HWH_power := 3;         # Power in kW
-param HWH_duration := 4;      # Number of time steps (e.g., 2 hours = 4 steps)
-param HWH_energy := 12;       # Total energy in kWh
-var hwh_start {d in D} binary;     # 1 if heater starts at time d
-var hwh_on {d in D} binary;        # 1 if heater is ON at time d
+# #trial hot water heater
+# param HWH_power := 3;         # Power in kW
+# param HWH_duration := 4;      # Number of time steps (e.g., 2 hours = 4 steps)
+# param HWH_energy := 12;       # Total energy in kWh
+# var hwh_start {d in D} binary;     # 1 if heater starts at time d
+# var hwh_on {d in D} binary;        # 1 if heater is ON at time d
 
 #PV
 param PV{d in D} >= 0;
 
-# AC unit (central AC unit using a standard 1.5-3.5KW)
-# must do at least 20kW of cooling over the course of the day
-param AC_energy = 20;          # Total kWh required for the day
-param AC_power_min = 1.5;     # Minimum AC power in kW
-param AC_power_max = 3.0;     # Maximum AC power in kW
+# # AC unit (central AC unit using a standard 1.5-3.5KW)
+# # must do at least 20kW of cooling over the course of the day
+# param AC_energy = 20;          # Total kWh required for the day
+# param AC_power_min = 1.5;     # Minimum AC power in kW
+# param AC_power_max = 3.0;     # Maximum AC power in kW
 param eps := 1e-3;
-var ac_power {d in D} >= 0, <= AC_power_max;  # AC power can be 0 (OFF) or between 1.5–3.5 (ON)
+# var ac_power {d in D} >= 0, <= AC_power_max;  # AC power can be 0 (OFF) or between 1.5–3.5 (ON)
 
 var battery_charge {D} >= 0, <= max_capacity;  # Battery state of charge (kWh)
 var discharge_rate {D} >= -max_discharge, <= max_discharge; # Battery discharge (kW)
