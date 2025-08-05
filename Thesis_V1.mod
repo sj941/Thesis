@@ -1,6 +1,7 @@
 # Sam Jones Thesis 2025
 set D ordered;
        # Power demand at each time period (kW)
+   # Power demand at each time period (kW)
 param max_capacity := 10;  # Max battery capacity in kWh
 param max_discharge := 5; # Max discharge rate in kW
 param initial_charge := 5;
@@ -8,8 +9,8 @@ param dt = 24/48; /* Half hourly time steps */
 param price {D};
 param grid_connection_capacity = 15;
 param final_min_charge := 2;
-
-
+#test comment
+#TEst
 #trial hot water heater
 param HWH_power := 3;         # Power in kW
 param HWH_duration := 4;      # Number of time steps (e.g., 2 hours = 4 steps)
